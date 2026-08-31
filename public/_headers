@@ -1,0 +1,12 @@
+# Cuando se activen Google Analytics / Meta Pixel (src/config.ts,
+# GA_MEASUREMENT_ID / META_PIXEL_ID), sumar a connect-src y script-src:
+#   https://www.googletagmanager.com https://www.google-analytics.com
+#   https://connect.facebook.net https://www.facebook.com
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), camera=(), microphone=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; object-src 'none'; base-uri 'self'

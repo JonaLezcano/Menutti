@@ -1,0 +1,302 @@
+/* Bricolage Grotesque / Inter / JetBrains Mono auto-hospedadas
+   (src/assets/fonts) — igual criterio que otros sitios del estudio: nada
+   se pide a Google Fonts en cada visita, así no hace falta declararlo en
+   la Política de Cookies. Las tres son variable fonts: un solo archivo
+   cubre todo el rango de pesos que usamos. */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500 800;
+  font-display: swap;
+  src: url('./assets/fonts/bricolage-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('./assets/fonts/inter-variable.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500 600;
+  font-display: swap;
+  src: url('./assets/fonts/jetbrains-mono-variable.woff2') format('woff2');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: auto; /* anchor jumps stay instant, on purpose */
+}
+
+body {
+  margin: 0;
+  background: #fbf6ec;
+  color: #201810;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #e3502a;
+  color: #fbf6ec;
+}
+
+/* Resalta la frase de dolor del H1 como si estuviera marcada con
+   fluorescente sobre una comanda — el único "riesgo estético" del hero,
+   deliberado: en vez de un degradé decorativo, la marca cae justo sobre
+   las palabras que nombran la pérdida de plata. */
+.pain-highlight {
+  background-image: linear-gradient(transparent 62%, #f0805a 62%);
+  background-repeat: no-repeat;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0 0.05em;
+}
+
+/* Perforación tipo ticket: una tira fina de "agujeritos" que revela el
+   fondo de la página. Se usa como borde superior/inferior de la
+   ReceiptCard del Hero y como separador de algunas secciones — el motivo
+   visual recurrente (pero discreto) de todo el sitio, ligado al mundo
+   real de una comanda impresa. */
+.ticket-perf {
+  height: 12px;
+  background-image: radial-gradient(circle, #fbf6ec 4px, transparent 4.5px);
+  background-size: 16px 12px;
+  background-position: center;
+  background-repeat: repeat-x;
+}
+
+.ticket-perf--soft {
+  background-image: radial-gradient(circle, #f1e8d8 4px, transparent 4.5px);
+}
+
+/* "Pearl button": glossy/3D CTA. Estructura (capas ::before/::after de
+   brillo, box-shadow inset en capas para el relieve 3D, transiciones
+   hover/active) igual que en jflit.online — acá recoloreada enteramente
+   a la paleta de Menutti vía theme(), no a mano, para que cambiar
+   tailwind.config.js alcance para recolorear el botón también:
+   - `.pearl-button` (default): shell flame + texto oscuro — el CTA
+     principal "Pedir DEMO AHORA".
+   - `.pearl-button--ink` : shell oscuro + texto claro, para el único
+     lugar (la banda de Cierre, de fondo ink) donde un botón flame sobre
+     flame se perdería.
+   - `.pearl-button--whatsapp`: shell verde WhatsApp, color de marca fijo
+     (no forma parte de la paleta de Menutti).
+*/
+.pearl-button {
+  --pearl-bg: theme('colors.flame.DEFAULT');
+  --pearl-text: theme('colors.flame.text');
+  outline: none;
+  cursor: pointer;
+  border: 0;
+  position: relative;
+  display: inline-flex;
+  border-radius: 999px;
+  background-color: var(--pearl-bg);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  box-shadow:
+    inset 0 0.3rem 0.9rem rgba(255, 226, 199, 0.55),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.35),
+    inset 0 -0.4rem 0.9rem rgba(255, 226, 199, 0.3),
+    0 1.4rem 1.6rem rgba(43, 13, 2, 0.22),
+    0 0.6rem 0.6rem -0.4rem rgba(43, 13, 2, 0.35);
+}
+
+.pearl-button--ink {
+  --pearl-bg: theme('colors.ink.DEFAULT');
+  --pearl-text: theme('colors.paper.DEFAULT');
+  box-shadow:
+    inset 0 0.3rem 0.9rem rgba(240, 128, 90, 0.2),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.5),
+    inset 0 -0.4rem 0.9rem rgba(240, 128, 90, 0.12),
+    0 1.4rem 1.6rem rgba(0, 0, 0, 0.35),
+    0 0.6rem 0.6rem -0.4rem rgba(0, 0, 0, 0.5);
+}
+
+.pearl-button--ink .pearl-wrap::before {
+  background-color: rgba(240, 128, 90, 0.1);
+}
+
+.pearl-button--ink .pearl-wrap::after {
+  box-shadow: inset 0 10px 8px -10px rgba(240, 128, 90, 0.35);
+  background: linear-gradient(180deg, rgba(240, 128, 90, 0.18) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.pearl-button--ink:hover {
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(240, 128, 90, 0.28),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.5),
+    inset 0 -0.4rem 0.9rem rgba(240, 128, 90, 0.18),
+    0 1.4rem 1.6rem rgba(0, 0, 0, 0.35),
+    0 0.6rem 0.6rem -0.4rem rgba(0, 0, 0, 0.5);
+}
+
+.pearl-button--ink:active {
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(240, 128, 90, 0.32),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.55),
+    inset 0 -0.4rem 0.9rem rgba(240, 128, 90, 0.14),
+    0 1rem 1.2rem rgba(0, 0, 0, 0.35),
+    0 0.4rem 0.4rem -0.3rem rgba(0, 0, 0, 0.5);
+}
+
+.pearl-button .pearl-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.75rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--pearl-text);
+}
+
+.pearl-button .pearl-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease;
+  transform: translateY(2%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 115%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 115%);
+}
+
+.pearl-button .pearl-wrap::before,
+.pearl-button .pearl-wrap::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.pearl-button .pearl-wrap::before {
+  left: -15%;
+  right: -15%;
+  top: -100%;
+  bottom: 25%;
+  border-radius: 50%;
+  background-color: rgba(255, 226, 199, 0.2);
+}
+
+.pearl-button .pearl-wrap::after {
+  left: 6%;
+  right: 6%;
+  top: 12%;
+  bottom: 40%;
+  border-radius: 22px 22px 0 0;
+  box-shadow: inset 0 10px 8px -10px rgba(255, 226, 199, 0.75);
+  background: linear-gradient(180deg, rgba(255, 226, 199, 0.32) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.pearl-button:hover {
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(255, 226, 199, 0.65),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.35),
+    inset 0 -0.4rem 0.9rem rgba(255, 226, 199, 0.45),
+    0 1.4rem 1.6rem rgba(43, 13, 2, 0.22),
+    0 0.6rem 0.6rem -0.4rem rgba(43, 13, 2, 0.35);
+}
+
+.pearl-button:hover .pearl-wrap::before {
+  transform: translateY(-5%);
+}
+
+.pearl-button:hover .pearl-wrap::after {
+  opacity: 0.5;
+  transform: translateY(5%);
+}
+
+.pearl-button:hover .pearl-label {
+  transform: translateY(-4%);
+}
+
+.pearl-button:active {
+  transform: translateY(3px);
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(255, 226, 199, 0.7),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.4),
+    inset 0 -0.4rem 0.9rem rgba(255, 226, 199, 0.35),
+    0 1rem 1.2rem rgba(43, 13, 2, 0.22),
+    0 0.4rem 0.4rem -0.3rem rgba(43, 13, 2, 0.35);
+}
+
+/* Tercer shell "pearl": verde WhatsApp, brillo blanco/neutro (un sheen
+   cálido sobre verde se ve verde-oliva turbio). */
+.pearl-button--whatsapp {
+  --pearl-bg: #25d366;
+  --pearl-text: #0b2a16;
+  box-shadow:
+    inset 0 0.3rem 0.9rem rgba(255, 255, 255, 0.35),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.45),
+    inset 0 -0.4rem 0.9rem rgba(255, 255, 255, 0.22),
+    0 1.4rem 1.6rem rgba(0, 0, 0, 0.25),
+    0 0.6rem 0.6rem -0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.pearl-button--whatsapp .pearl-wrap::before {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+.pearl-button--whatsapp .pearl-wrap::after {
+  box-shadow: inset 0 10px 8px -10px rgba(255, 255, 255, 0.65);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(0, 0, 0, 0) 55%);
+}
+
+.pearl-button--whatsapp:hover {
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(255, 255, 255, 0.45),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.45),
+    inset 0 -0.4rem 0.9rem rgba(255, 255, 255, 0.32),
+    0 1.4rem 1.6rem rgba(0, 0, 0, 0.25),
+    0 0.6rem 0.6rem -0.4rem rgba(0, 0, 0, 0.4);
+}
+
+.pearl-button--whatsapp:active {
+  box-shadow:
+    inset 0 0.3rem 0.5rem rgba(255, 255, 255, 0.5),
+    inset 0 -0.1rem 0.3rem rgba(0, 0, 0, 0.5),
+    inset 0 -0.4rem 0.9rem rgba(255, 255, 255, 0.28),
+    0 1rem 1.2rem rgba(0, 0, 0, 0.25),
+    0 0.4rem 0.4rem -0.3rem rgba(0, 0, 0, 0.4);
+}
+
+:focus-visible {
+  outline: 2px solid #e3502a;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
