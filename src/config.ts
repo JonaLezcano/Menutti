@@ -1,11 +1,11 @@
 /**
  * URL de la demo interactiva real (menú + upsells + checkout de Crunchy
- * Burger). Todavía no tiene deploy propio — placeholder a actualizar por
- * Jonathan apenas exista la URL definitiva. Todos los botones "Pedir DEMO
- * AHORA" del sitio importan esta constante en vez de hardcodear el link,
- * así que actualizar acá alcanza para todo el sitio.
+ * Burger). Todos los botones "PEDIR DEMO AHORA" del sitio importan esta
+ * constante en vez de hardcodear el link, así que actualizar acá alcanza
+ * para todo el sitio. Deployada en Vercel (Netlify quedó sin créditos de
+ * producción en la cuenta del equipo JFL).
  */
-export const DEMO_URL = 'https://menutti-demo.netlify.app';
+export const DEMO_URL = 'https://menutti-demo.vercel.app';
 
 /**
  * IDs de tracking, todavía sin completar. `src/lib/trackers.ts` solo
