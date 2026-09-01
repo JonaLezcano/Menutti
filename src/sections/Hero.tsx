@@ -74,15 +74,14 @@ export default function Hero() {
 
         <FadeIn delay={0.05}>
           <h1 className="font-display text-[clamp(2.3rem,6.4vw,3.75rem)] font-extrabold leading-[1.05] tracking-tight text-ink">
-            Tu carta de WhatsApp te está haciendo{' '}
-            <span className="pain-highlight">perder plata en cada pedido.</span>
+            El menú online que hace crecer tu negocio
           </h1>
         </FadeIn>
 
         <FadeIn delay={0.1}>
           <p className="max-w-xl text-balance text-[15.5px] leading-relaxed text-ink-dim sm:text-base">
-            Menutti convierte cada pedido en más ticket promedio, con upsells automáticos y
-            métricas reales — el mismo sistema que ya funciona en Crunchy Burger.
+            Menutti ayuda a convertir esas ventas en tickets más altos, con upsells automáticos
+            que aumentan tus ganancias.
           </p>
         </FadeIn>
 
@@ -93,7 +92,7 @@ export default function Hero() {
         <FadeIn delay={0.2}>
           <p className="flex items-center gap-2 text-[13.5px] text-ink-dimmer">
             <CheckCircle2 size={16} className="shrink-0 text-cash" />
-            Ya funcionando en Crunchy Burger — no es una promesa, es un caso real.
+            Ya funcionando en un local real — no es una promesa, es un caso real.
           </p>
         </FadeIn>
       </div>

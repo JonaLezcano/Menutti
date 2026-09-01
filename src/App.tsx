@@ -3,6 +3,7 @@ import CursorGlow from './components/CursorGlow';
 import Hero from './sections/Hero';
 import Problema from './sections/Problema';
 import ComoFunciona from './sections/ComoFunciona';
+import Comparativa from './sections/Comparativa';
 import Prueba from './sections/Prueba';
 import Faq from './sections/Faq';
 import CierreBand from './sections/CierreBand';
@@ -27,6 +28,7 @@ export default function App() {
         <Hero />
         <Problema />
         <ComoFunciona />
+        <Comparativa />
         <Prueba />
         <Faq />
         <CierreBand />
