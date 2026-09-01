@@ -4,11 +4,13 @@ import Eyebrow from '../components/Eyebrow';
 import CtaGroup from '../components/CtaGroup';
 
 /**
- * El único momento oscuro de una página por lo demás clara — mismo
- * criterio que la banda dorada de jflit.online (un golpe de color
- * reservado para el cierre). Acá además es el único lugar del sitio
- * donde se usa AnimatedText: la frase de urgencia real (no un timer
- * inventado) se "escribe" a medida que se scrollea, como remate final.
+ * El cierre oscuro de una página por lo demás clara — mismo criterio
+ * que la banda dorada de jflit.online (un golpe de color reservado para
+ * el remate). El Hero también pasó a ser oscuro (foto de fondo casi
+ * negra, ver su comentario en Hero.tsx), así que esto ya no es el único
+ * momento oscuro del sitio, pero sigue siendo el único lugar donde se
+ * usa AnimatedText: la frase de urgencia real (no un timer inventado)
+ * se "escribe" a medida que se scrollea, como remate final.
  */
 export default function CierreBand() {
   return (
