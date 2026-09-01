@@ -60,13 +60,13 @@ export default function Comparativa() {
           {FILAS.map((fila) => (
             <div
               key={fila.title}
-              className="flex items-stretch gap-2.5 rounded-2xl border border-ink-border bg-paper-card p-2"
+              className="flex items-stretch gap-2 rounded-2xl border border-ink-border bg-paper-card p-2"
             >
-              <div className="flex flex-1 flex-col justify-center rounded-xl bg-cash px-4 py-3.5">
-                <h3 className="text-[14px] font-semibold leading-snug text-white">{fila.title}</h3>
-                <p className="mt-1 text-[12px] leading-relaxed text-white/70">{fila.body}</p>
+              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-xl bg-cash px-3.5 py-3">
+                <h3 className="text-[13.5px] font-semibold leading-snug text-white">{fila.title}</h3>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-white/70">{fila.body}</p>
               </div>
-              <div className="flex w-14 shrink-0 flex-col items-center justify-center gap-2">
+              <div className="flex w-[30%] shrink-0 grow-0 basis-[30%] flex-col items-center justify-center gap-2 rounded-xl bg-paper-soft">
                 <CheckCircle2 size={18} className="shrink-0 text-cash" aria-label="Menutti: sí" />
                 <div className="h-px w-6 bg-ink-border" aria-hidden="true" />
                 <X size={16} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
