@@ -66,10 +66,14 @@ export default function Comparativa() {
                 <h3 className="text-[13.5px] font-semibold leading-snug text-white">{fila.title}</h3>
                 <p className="mt-1 text-[11.5px] leading-relaxed text-white/70">{fila.body}</p>
               </div>
-              <div className="flex w-[30%] shrink-0 grow-0 basis-[30%] flex-col items-center justify-center gap-2 rounded-xl bg-paper-soft">
-                <CheckCircle2 size={18} className="shrink-0 text-cash" aria-label="Menutti: sí" />
-                <div className="h-px w-6 bg-ink-border" aria-hidden="true" />
-                <X size={16} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
+              <div className="flex w-[30%] shrink-0 grow-0 basis-[30%] items-center justify-center gap-2 rounded-xl bg-paper-soft">
+                <div className="flex flex-1 items-center justify-center">
+                  <CheckCircle2 size={18} className="shrink-0 text-cash" aria-label="Menutti: sí" />
+                </div>
+                <div className="h-6 w-px shrink-0 bg-ink-border" aria-hidden="true" />
+                <div className="flex flex-1 items-center justify-center">
+                  <X size={16} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
+                </div>
               </div>
             </div>
           ))}
