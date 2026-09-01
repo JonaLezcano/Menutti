@@ -17,7 +17,7 @@ const LEGAL_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="border-t border-ink-border bg-paper-soft px-4 pb-6 pt-12">
+    <footer className="border-t border-ink-border bg-paper-soft px-4 pb-20 pt-12 sm:pb-6">
       <div className="mx-auto flex max-w-5xl flex-col gap-10 pb-10 sm:flex-row sm:justify-between">
         <div className="max-w-[30ch]">
           <span className="flex items-center gap-1.5 font-display text-lg font-bold text-ink">
@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       <p className="border-t border-ink-border pt-6 text-center font-mono text-[11px] text-ink-dimmer">
-        © {new Date().getFullYear()} Menutti. El mismo sistema que ya funciona en un local real.
+        © {new Date().getFullYear()} Menutti — un producto de JFL Estudio Digital. El mismo sistema que ya funciona en un local real.
       </p>
     </footer>
   );
