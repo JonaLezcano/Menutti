@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       <p className="border-t border-ink-border pt-6 text-center font-mono text-[11px] text-ink-dimmer">
-        © {new Date().getFullYear()} Menutti. El mismo sistema que ya funciona en Crunchy Burger.
+        © {new Date().getFullYear()} Menutti. El mismo sistema que ya funciona en un local real.
       </p>
     </footer>
   );
