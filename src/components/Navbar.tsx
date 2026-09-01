@@ -6,7 +6,6 @@ import { DEMO_URL } from '../config';
 const LINKS = [
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#prueba', label: 'Prueba' },
-  { href: '#planes', label: 'Planes' },
   { href: '#faq', label: 'FAQ' },
 ];
 

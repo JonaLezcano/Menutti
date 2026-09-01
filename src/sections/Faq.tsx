@@ -6,31 +6,27 @@ import AccordionItem from '../components/AccordionItem';
 const FAQS = [
   {
     q: '¿Tengo que dejar de usar WhatsApp?',
-    a: 'No. El pedido te sigue llegando directo a tu WhatsApp — lo único que cambia es que llega mejor armado, con el upsell ya adentro.',
+    a: 'No. El pedido te sigue llegando directo a tu WhatsApp, igual que ahora — lo único que cambia es que llega mejor armado, con el upsell ya incluido.',
   },
   {
     q: '¿Es difícil de administrar?',
-    a: 'No. No necesitás saber de tecnología ni tocar código — el mantenimiento corre por cuenta de Menutti, en los dos planes.',
+    a: 'No. No necesitás saber de tecnología ni tocar código: la gestión del sistema corre por cuenta de Menutti, vos solo mirás los pedidos entrar y el panel de métricas.',
   },
   {
-    q: '¿Cuál es la diferencia entre Básico y Pro?',
-    a: 'Básico es un subdominio propio de Menutti (rápido y barato para arrancar). Pro es el dominio propio de tu local, para tener identidad de marca completa.',
-  },
-  {
-    q: '¿Cuánto cuesta?',
-    a: 'El mantenimiento es $50.000 ARS por mes y cubre ambos planes. Para el detalle de puesta en marcha, lo mejor es hablarlo directo por WhatsApp.',
-  },
-  {
-    q: '¿Esto ya funciona en algún local de verdad?',
-    a: 'Sí. Es el mismo sistema que ya toma pedidos todos los días en Crunchy Burger — no es una promesa ni un prototipo.',
-  },
-  {
-    q: '¿Puedo probarlo antes de decidir?',
-    a: 'Sí. La demo es interactiva y real: armás un pedido de prueba con el menú real de Crunchy Burger, con upsells y checkout incluidos, sin formularios y sin compromiso.',
+    q: '¿Qué incluye el servicio mes a mes?',
+    a: 'Una revisión de producto por mes, para que el sistema se mantenga actualizado y funcionando bien, sin que vos tengas que ocuparte de nada técnico.',
   },
   {
     q: '¿Puedo sumar más funciones después?',
-    a: 'Sí. Control de stock y gestión de caja están disponibles como upgrade cuando los necesites — no son parte de la decisión inicial.',
+    a: 'Sí. Más adelante podés incorporar gestión integral de redes sociales, bots para Instagram y WhatsApp, y sistemas de comandas y caja diaria — se suman cuando los necesites, no son parte de la decisión inicial.',
+  },
+  {
+    q: '¿Esto ya funciona en algún local de verdad?',
+    a: 'Sí. Es el mismo sistema que ya toma pedidos todos los días en un local real — no es una promesa ni un prototipo.',
+  },
+  {
+    q: '¿Puedo probarlo antes de decidir?',
+    a: 'Sí. La demo es interactiva y real: armás un pedido de prueba con el menú real de un local que ya lo usa, con upsells y checkout incluidos, sin formularios y sin compromiso.',
   },
 ];
 

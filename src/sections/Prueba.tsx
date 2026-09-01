@@ -8,7 +8,7 @@ import checkoutImg from '../assets/prueba/checkout.webp';
 import dashboardImg from '../assets/prueba/dashboard.webp';
 
 const PASOS = [
-  { src: menuImg, alt: 'Menú digital de Crunchy Burger en Menutti, con categorías, fotos y precios reales.', caption: 'Categorías, fotos y precios reales de Crunchy Burger.' },
+  { src: menuImg, alt: 'Menú digital de Menutti en un local real, con categorías, fotos y precios reales.', caption: 'Categorías, fotos y precios reales de un local que ya usa el sistema.' },
   { src: upsellImg, alt: 'Popup de upsell sugiriendo sumar un producto al pedido.', caption: 'El momento exacto en que se le sugiere al cliente sumar algo más.' },
   { src: carritoImg, alt: 'Carrito de compra con la tira de upsells ya sumados al pedido.', caption: 'El pedido armándose, con los extras ya sumados.' },
   { src: checkoutImg, alt: 'Pantalla de checkout, paso previo a redirigir a WhatsApp.', caption: 'El paso final antes de redirigir a WhatsApp.' },
@@ -19,13 +19,13 @@ export default function Prueba() {
     <section id="prueba" className="px-4 py-16 sm:py-24">
       <div className="mx-auto max-w-5xl">
         <FadeIn>
-          <Eyebrow>Caso Crunchy Burger</Eyebrow>
+          <Eyebrow>Caso real</Eyebrow>
           <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.7rem,4vw,2.5rem)] font-bold leading-tight text-ink">
-            No es una promesa. Ya está funcionando en Crunchy Burger.
+            No es una promesa. Ya está funcionando en un local real.
           </h2>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-dim">
             Menutti no es una idea ni un mockup — es el mismo sistema que ya toma pedidos todos
-            los días en Crunchy Burger, con las 54 hamburguesas, papas, combos y bebidas reales
+            los días en un local real, con las 54 hamburguesas, papas, combos y bebidas reales
             de su carta. Podés probarlo vos mismo: armá un pedido de prueba en la demo, con
             upsells reales, y vas a ver exactamente lo que vería un cliente tuyo.
           </p>
@@ -40,7 +40,7 @@ export default function Prueba() {
                     src={paso.src}
                     alt={paso.alt}
                     width={390}
-                    height={844}
+                    height={694}
                     loading="lazy"
                     className="h-auto w-full"
                   />
@@ -65,7 +65,7 @@ export default function Prueba() {
               <p className="text-[14.5px] leading-relaxed text-ink-dim">
                 Productos más vendidos, ticket promedio, ventas generadas por upsell,
                 facturación y cierres diarios, semanales y mensuales — con datos de ejemplo, no
-                los reales de Crunchy Burger, por privacidad.
+                los reales del local, por privacidad.
               </p>
             </div>
             <div className="max-h-[440px] overflow-y-auto rounded-2xl border border-ink-border-strong">
@@ -82,7 +82,7 @@ export default function Prueba() {
         </FadeIn>
 
         <FadeIn delay={0.2} className="mt-12 flex justify-center">
-          <DemoCta label="Pedir DEMO AHORA — probá el pedido real de Crunchy Burger" />
+          <DemoCta label="PEDIR DEMO AHORA — probá el pedido real, sin compromiso" />
         </FadeIn>
       </div>
     </section>

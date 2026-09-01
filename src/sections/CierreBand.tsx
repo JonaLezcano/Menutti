@@ -19,13 +19,12 @@ export default function CierreBand() {
         <Eyebrow tone="ink">Antes de que se pierda otro pedido</Eyebrow>
 
         <AnimatedText
-          text="Cada día que pasa con la carta en WhatsApp es ticket promedio que no estás cobrando."
+          text="Probá el sistema funcionando de verdad antes de decidir"
           className="font-display text-[clamp(1.7rem,4.4vw,2.75rem)] font-bold leading-[1.15] text-paper"
         />
 
         <p className="max-w-lg text-[15px] leading-relaxed text-paper/70">
-          Probá el sistema funcionando de verdad, con el mismo caso real de Crunchy Burger,
-          antes de decidir nada.
+          Cada día que pasa con la carta en WhatsApp es ticket promedio que no estás cobrando.
         </p>
 
         <CtaGroup tone="paper" className="mt-2 justify-center" />

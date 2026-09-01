@@ -5,7 +5,6 @@ import { openCookiePreferences } from '../lib/cookieConsentEvents';
 const LINKS = [
   { href: '#como-funciona', label: 'Cómo funciona' },
   { href: '#prueba', label: 'Prueba' },
-  { href: '#planes', label: 'Planes' },
   { href: '#faq', label: 'FAQ' },
 ];
 

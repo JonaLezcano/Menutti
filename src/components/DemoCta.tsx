@@ -9,14 +9,14 @@ interface DemoCtaProps {
 }
 
 /**
- * CTA principal del sitio: "Pedir DEMO AHORA", siempre al mismo destino
+ * CTA principal del sitio: "PEDIR DEMO AHORA", siempre al mismo destino
  * (DEMO_URL en src/config.ts — placeholder hasta que la demo tenga su
- * propio deploy). Aparece en Hero, Cómo funciona, Prueba, Planes y
- * Cierre con el mismo texto reconocible (ver estructura-landing.md).
+ * propio deploy). Aparece en Hero, Cómo funciona, Prueba y Cierre con
+ * el mismo texto reconocible (ver estructura-landing.md).
  * Reutiliza el "pearl button" glossy/3D — mecanismo intacto, recoloreado
  * en index.css.
  */
-export default function DemoCta({ label = 'Pedir DEMO AHORA', className, variant = 'flame' }: DemoCtaProps) {
+export default function DemoCta({ label = 'PEDIR DEMO AHORA', className, variant = 'flame' }: DemoCtaProps) {
   return (
     <a
       href={DEMO_URL}

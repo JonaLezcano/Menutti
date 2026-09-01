@@ -4,8 +4,6 @@ import Hero from './sections/Hero';
 import Problema from './sections/Problema';
 import ComoFunciona from './sections/ComoFunciona';
 import Prueba from './sections/Prueba';
-import Planes from './sections/Planes';
-import Mantenimiento from './sections/Mantenimiento';
 import Faq from './sections/Faq';
 import CierreBand from './sections/CierreBand';
 import Footer from './sections/Footer';
@@ -30,8 +28,6 @@ export default function App() {
         <Problema />
         <ComoFunciona />
         <Prueba />
-        <Planes />
-        <Mantenimiento />
         <Faq />
         <CierreBand />
       </main>
