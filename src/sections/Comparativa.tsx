@@ -1,4 +1,4 @@
-import { CheckCircle2, Minus } from 'lucide-react';
+import { CheckCircle2, X } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import Eyebrow from '../components/Eyebrow';
 
@@ -29,11 +29,12 @@ const FILAS = [
  * Tabla comparativa Menutti vs. "Otros" — tabla real en desktop (semántica,
  * navegable con lector de pantalla) y cards apiladas en mobile (una por
  * feature, con las dos columnas lado a lado adentro), porque una tabla de
- * 3 columnas angosta se rompe o queda ilegible por debajo de ~480px. Mismo
- * lenguaje visual que el resto del sitio: check en cash (la plata que
- * sube) para todo lo que Menutti resuelve, un guion neutro en gris para lo
- * que "los otros" no tienen — sin ✕ rojo, no es un ataque a la
- * competencia, es una foto de lo que falta.
+ * 3 columnas angosta se rompe o queda ilegible por debajo de ~480px. Cada
+ * feature vive dentro de un chip sólido en `cash` (verde) — no `flame`:
+ * con texto blanco encima, flame da ~3.9:1 de contraste (falla AA para
+ * texto normal), cash da ~5.3:1. Fuera del chip, sobre el blanco de la
+ * tabla: check verde bajo "Menutti", ✕ oscura bajo "Otros" — sin rojo, no
+ * es un ataque a la competencia, es una foto de lo que falta.
  */
 export default function Comparativa() {
   return (
@@ -48,25 +49,27 @@ export default function Comparativa() {
           </h2>
         </FadeIn>
 
-        {/* Mobile: una card por feature, con las dos columnas lado a lado
-            adentro de la card — nunca una tabla de 3 columnas apretada. */}
+        {/* Mobile: una card por feature, chip sólido en cash a la izquierda
+            (título + body en blanco) y check/✕ a la derecha — mismo
+            lenguaje visual que la tabla de desktop. */}
         <FadeIn delay={0.05} className="mt-8 flex flex-col gap-3 sm:hidden">
+          <div className="flex items-center justify-end gap-4 pr-1 text-[11px] font-semibold uppercase tracking-wide text-ink-dimmer" aria-hidden="true">
+            <span className="text-cash">Menutti</span>
+            <span>Otros</span>
+          </div>
           {FILAS.map((fila) => (
             <div
               key={fila.title}
-              className="rounded-2xl border border-ink-border bg-paper-card p-4"
+              className="flex items-stretch gap-2.5 rounded-2xl border border-ink-border bg-paper-card p-2"
             >
-              <h3 className="text-[15px] font-semibold leading-snug text-ink">{fila.title}</h3>
-              <p className="mt-1 text-[13px] leading-relaxed text-ink-dim">{fila.body}</p>
-              <div className="mt-3.5 grid grid-cols-2 gap-2 border-t border-ink-border pt-3.5">
-                <div className="flex items-center gap-2 rounded-xl bg-cash-pale px-3 py-2">
-                  <CheckCircle2 size={16} className="shrink-0 text-cash" />
-                  <span className="text-[12.5px] font-semibold text-cash">Menutti</span>
-                </div>
-                <div className="flex items-center gap-2 rounded-xl bg-paper px-3 py-2">
-                  <Minus size={16} className="shrink-0 text-ink-dimmer" />
-                  <span className="text-[12.5px] font-medium text-ink-dimmer">Otros</span>
-                </div>
+              <div className="flex flex-1 flex-col justify-center rounded-xl bg-cash px-4 py-3.5">
+                <h3 className="text-[14px] font-semibold leading-snug text-white">{fila.title}</h3>
+                <p className="mt-1 text-[12px] leading-relaxed text-white/70">{fila.body}</p>
+              </div>
+              <div className="flex w-14 shrink-0 flex-col items-center justify-center gap-2">
+                <CheckCircle2 size={18} className="shrink-0 text-cash" aria-label="Menutti: sí" />
+                <div className="h-px w-6 bg-ink-border" aria-hidden="true" />
+                <X size={16} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
               </div>
             </div>
           ))}
@@ -92,15 +95,17 @@ export default function Comparativa() {
             <tbody>
               {FILAS.map((fila, i) => (
                 <tr key={fila.title} className={i !== FILAS.length - 1 ? 'border-b border-ink-border' : ''}>
-                  <th scope="row" className="px-6 py-5 text-left font-normal">
-                    <span className="block text-[15px] font-semibold leading-snug text-ink">{fila.title}</span>
-                    <span className="mt-0.5 block text-[13px] leading-relaxed text-ink-dim">{fila.body}</span>
+                  <th scope="row" className="p-2 text-left font-normal align-middle">
+                    <div className="flex h-full flex-col justify-center rounded-2xl bg-cash px-5 py-4">
+                      <span className="block text-[15px] font-semibold leading-snug text-white">{fila.title}</span>
+                      <span className="mt-0.5 block text-[13px] leading-relaxed text-white/70">{fila.body}</span>
+                    </div>
                   </th>
-                  <td className="px-6 py-5 text-center">
+                  <td className="px-6 py-5 text-center align-middle">
                     <CheckCircle2 size={22} className="mx-auto shrink-0 text-cash" aria-label="Sí" />
                   </td>
-                  <td className="px-6 py-5 text-center">
-                    <Minus size={20} className="mx-auto shrink-0 text-ink-dimmer" aria-label="No" />
+                  <td className="px-6 py-5 text-center align-middle">
+                    <X size={20} className="mx-auto shrink-0 text-ink-dim" aria-label="No" />
                   </td>
                 </tr>
               ))}

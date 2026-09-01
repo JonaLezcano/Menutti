@@ -29,5 +29,5 @@ dist-ssr
 # Vercel
 .vercel
 
-# Environment variables
+# Env files
 .env*
