@@ -30,11 +30,16 @@ const FILAS = [
  * navegable con lector de pantalla) y cards apiladas en mobile (una por
  * feature, con las dos columnas lado a lado adentro), porque una tabla de
  * 3 columnas angosta se rompe o queda ilegible por debajo de ~480px. Cada
- * feature vive dentro de un chip sólido en `cash` (verde) — no `flame`:
- * con texto blanco encima, flame da ~3.9:1 de contraste (falla AA para
- * texto normal), cash da ~5.3:1. Fuera del chip, sobre el blanco de la
- * tabla: check verde bajo "Menutti", ✕ oscura bajo "Otros" — sin rojo, no
- * es un ataque a la competencia, es una foto de lo que falta.
+ * feature vive dentro de un chip sólido en `flame` (el mismo naranja del
+ * botón "Pedir DEMO AHORA") con texto en `flame.text` (marrón muy oscuro)
+ * encima — no blanco: flame con texto blanco falla AA (~3.9:1), flame con
+ * `flame.text` a opacidad completa da ~4.7:1 y pasa AA para texto normal.
+ * Por eso título y body van ambos a opacidad completa (sin `/70`): a 70%
+ * el contraste cae a ~3.1:1, que ya no pasa AA en texto de este tamaño —
+ * la jerarquía título/body se resuelve con tamaño y peso, no con opacidad.
+ * Fuera del chip, sobre el blanco de la tabla: check verde bajo "Menutti",
+ * ✕ oscura bajo "Otros" — sin rojo, no es un ataque a la competencia, es
+ * una foto de lo que falta.
  */
 export default function Comparativa() {
   return (
@@ -49,9 +54,10 @@ export default function Comparativa() {
           </h2>
         </FadeIn>
 
-        {/* Mobile: una card por feature, chip sólido en cash a la izquierda
-            (título + body en blanco) y check/✕ a la derecha — mismo
-            lenguaje visual que la tabla de desktop. */}
+        {/* Mobile: una card por feature, chip sólido en flame a la izquierda
+            (título + body en flame.text, el mismo par de colores del botón
+            "Pedir DEMO AHORA") y check/✕ a la derecha — mismo lenguaje
+            visual que la tabla de desktop. */}
         <FadeIn delay={0.05} className="mt-8 flex flex-col gap-3 sm:hidden">
           <div className="flex items-center justify-end gap-4 pr-1 text-[11px] font-semibold uppercase tracking-wide text-ink-dimmer" aria-hidden="true">
             <span className="text-cash">Menutti</span>
@@ -62,9 +68,9 @@ export default function Comparativa() {
               key={fila.title}
               className="flex items-stretch gap-2 rounded-2xl border border-ink-border bg-paper-card p-2"
             >
-              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-xl bg-cash px-3.5 py-3">
-                <h3 className="text-[13.5px] font-semibold leading-snug text-white">{fila.title}</h3>
-                <p className="mt-1 text-[11.5px] leading-relaxed text-white/70">{fila.body}</p>
+              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-xl bg-flame px-3.5 py-3">
+                <h3 className="text-[13.5px] font-semibold leading-snug text-flame-text">{fila.title}</h3>
+                <p className="mt-1 text-[11.5px] leading-relaxed text-flame-text">{fila.body}</p>
               </div>
               <div className="flex w-[30%] shrink-0 grow-0 basis-[30%] items-center justify-center gap-2 rounded-xl bg-paper-soft">
                 <div className="flex flex-1 items-center justify-center">
@@ -100,9 +106,9 @@ export default function Comparativa() {
               {FILAS.map((fila, i) => (
                 <tr key={fila.title} className={i !== FILAS.length - 1 ? 'border-b border-ink-border' : ''}>
                   <th scope="row" className="p-2 text-left font-normal align-middle">
-                    <div className="flex h-full flex-col justify-center rounded-2xl bg-cash px-5 py-4">
-                      <span className="block text-[15px] font-semibold leading-snug text-white">{fila.title}</span>
-                      <span className="mt-0.5 block text-[13px] leading-relaxed text-white/70">{fila.body}</span>
+                    <div className="flex h-full flex-col justify-center rounded-2xl bg-flame px-5 py-4">
+                      <span className="block text-[15px] font-semibold leading-snug text-flame-text">{fila.title}</span>
+                      <span className="mt-0.5 block text-[13px] leading-relaxed text-flame-text">{fila.body}</span>
                     </div>
                   </th>
                   <td className="px-6 py-5 text-center align-middle">
