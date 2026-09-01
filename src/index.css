@@ -63,10 +63,9 @@ body {
 }
 
 /* Perforación tipo ticket: una tira fina de "agujeritos" que revela el
-   fondo de la página. Se usa como borde superior/inferior de la
-   ReceiptCard del Hero y como separador de algunas secciones — el motivo
-   visual recurrente (pero discreto) de todo el sitio, ligado al mundo
-   real de una comanda impresa. */
+   fondo de la página. Se usa como separador entre algunas secciones — el
+   motivo visual recurrente (pero discreto) de todo el sitio, ligado al
+   mundo real de una comanda impresa. */
 .ticket-perf {
   height: 12px;
   background-image: radial-gradient(circle, #fbf6ec 4px, transparent 4.5px);
@@ -77,6 +76,31 @@ body {
 
 .ticket-perf--soft {
   background-image: radial-gradient(circle, #f1e8d8 4px, transparent 4.5px);
+}
+
+/* Fondo del Hero (captura real de la Demo funcionando) — misma técnica
+   que jflit.online: en vez de terminar en un rectángulo duro, una
+   máscara radial desvanece los bordes de la foto hacia transparente, así
+   se ve el color de página (papel) por debajo y la imagen lee como parte
+   de la escena, no como un recuadro pegado. Dos variantes porque el
+   recorte mobile (más vertical) y el desktop (más panorámico) necesitan
+   el foco de la máscara en puntos distintos del frame. */
+.hero-media-mask {
+  -webkit-mask-image: radial-gradient(78% 85% at 64% 46%, #000 0%, #000 42%, transparent 92%);
+  mask-image: radial-gradient(78% 85% at 64% 46%, #000 0%, #000 42%, transparent 92%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+
+.hero-media-mask--mobile {
+  -webkit-mask-image: radial-gradient(85% 80% at 58% 42%, #000 0%, #000 40%, transparent 92%);
+  mask-image: radial-gradient(85% 80% at 58% 42%, #000 0%, #000 40%, transparent 92%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
 }
 
 /* "Pearl button": glossy/3D CTA. Estructura (capas ::before/::after de
