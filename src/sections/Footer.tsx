@@ -70,7 +70,7 @@ export default function Footer() {
       </div>
 
       <p className="border-t border-ink-border pt-6 text-center font-mono text-[11px] text-ink-dimmer">
-        © {new Date().getFullYear()} Menutti — un producto de JFL Estudio Digital. El mismo sistema que ya funciona en un local real.
+        © {new Date().getFullYear()} Menutti — un producto de JFL Estudio Digital.
       </p>
     </footer>
   );
