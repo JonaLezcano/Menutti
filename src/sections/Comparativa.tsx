@@ -77,17 +77,17 @@ export default function Comparativa() {
             aria-hidden="true"
           >
             <path
-              d="M17,16 C17,46 50,36 50,66"
+              d="M18,30 C24,25 26,34 19,36 C11,38 9,29 17,29 C26,29 38,48 50,62"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1"
+              strokeWidth="1.25"
               vectorEffect="non-scaling-stroke"
             />
             <path
-              d="M83,16 C83,46 50,36 50,66"
+              d="M82,30 C76,25 74,34 81,36 C89,38 91,29 83,29 C74,29 62,48 50,62"
               fill="none"
               stroke="currentColor"
-              strokeWidth="1"
+              strokeWidth="1.25"
               vectorEffect="non-scaling-stroke"
             />
           </svg>
