@@ -1,4 +1,4 @@
-import { CheckCircle2, X } from 'lucide-react';
+import { Check, X } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
 import Eyebrow from '../components/Eyebrow';
 
@@ -26,20 +26,30 @@ const FILAS = [
 ];
 
 /**
- * Tabla comparativa Menutti vs. "Otros" — tabla real en desktop (semántica,
- * navegable con lector de pantalla) y cards apiladas en mobile (una por
- * feature, con las dos columnas lado a lado adentro), porque una tabla de
- * 3 columnas angosta se rompe o queda ilegible por debajo de ~480px. Cada
- * feature vive dentro de un chip sólido en `flame` (el mismo naranja del
- * botón "Pedir DEMO AHORA") con texto en `flame.text` (marrón muy oscuro)
- * encima — no blanco: flame con texto blanco falla AA (~3.9:1), flame con
- * `flame.text` a opacidad completa da ~4.7:1 y pasa AA para texto normal.
- * Por eso título y body van ambos a opacidad completa (sin `/70`): a 70%
- * el contraste cae a ~3.1:1, que ya no pasa AA en texto de este tamaño —
- * la jerarquía título/body se resuelve con tamaño y peso, no con opacidad.
- * Fuera del chip, sobre el blanco de la tabla: check verde bajo "Menutti",
- * ✕ oscura bajo "Otros" — sin rojo, no es un ataque a la competencia, es
- * una foto de lo que falta.
+ * Comparativa Menutti vs. "Otros", en formato infografía de dos cápsulas
+ * conectadas (inspirado en el layout "2 Points Infographic": dos headers
+ * en pastilla unidos por líneas curvas a una etiqueta central) adaptado a
+ * una comparación fila-por-fila en vez de dos listas independientes — acá
+ * ambas cápsulas apuntan a la MISMA lista de features de abajo, no a
+ * contenido propio cada una.
+ *
+ * Cápsula "Menutti" en `flame` (mismo naranja del botón "Pedir DEMO
+ * AHORA", texto en `flame.text` ~4.7:1 AA). Cápsula "Otros" en `ink`
+ * (texto `paper`, ~16:1) — a propósito NO en `cash` verde: el usuario ya
+ * sacó el verde de esta sección en una ronda anterior (pidió pasar el
+ * chip de cash a flame) y pidió explícitamente reservar `cash` para "la
+ * plata que sube" en otra parte de la página, no para "la opción sin
+ * destacar" acá. `ink` lee como neutro/apagado frente al flame, que es
+ * exactamente la jerarquía que se busca: Menutti protagonista, Otros gris.
+ *
+ * Debajo, la lista de 5 features (sin duplicar contenido: un solo título
+ * + body por fila, tal cual FILAS) con un cuadradito indicador a cada
+ * lado en vez de los círculos de check/X de la versión anterior — el
+ * cuadrado es el motivo de "bullet de color" de la referencia, adaptado a
+ * indicador binario: cuadrado flame + check a la izquierda (Menutti sí),
+ * cuadrado outline + X a la derecha (Otros no). Ninguno de los dos
+ * indicadores depende solo del color: posición, forma (sólido vs.
+ * outline) e ícono ya distinguen "sí" de "no" sin necesitar leer color.
  */
 export default function Comparativa() {
   return (
@@ -54,73 +64,67 @@ export default function Comparativa() {
           </h2>
         </FadeIn>
 
-        {/* Mobile: una card por feature, chip sólido en flame a la izquierda
-            (título + body en flame.text, el mismo par de colores del botón
-            "Pedir DEMO AHORA") y check/✕ a la derecha — mismo lenguaje
-            visual que la tabla de desktop. */}
-        <FadeIn delay={0.05} className="mt-8 flex flex-col gap-3 sm:hidden">
-          <div className="flex items-center justify-end gap-4 pr-1 text-[11px] font-semibold uppercase tracking-wide text-ink-dimmer" aria-hidden="true">
-            <span className="text-cash">Menutti</span>
-            <span>Otros</span>
-          </div>
+        {/* Header infográfico: dos cápsulas conectadas por líneas curvas
+            a una pastilla central "Comparación" — el motivo visual de la
+            referencia, aplicado a un layout de altura fija para que las
+            curvas SVG y las pastillas queden ancladas entre sí en ambos
+            breakpoints (solo cambian tamaños de fuente/paddings). */}
+        <FadeIn delay={0.05} className="relative mx-auto mt-9 h-[104px] max-w-sm sm:mt-14 sm:h-36 sm:max-w-2xl">
+          <svg
+            className="absolute inset-0 h-full w-full text-ink-border-strong"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M17,16 C17,46 50,36 50,66"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+            />
+            <path
+              d="M83,16 C83,46 50,36 50,66"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+
+          <span className="absolute left-0 top-0 z-10 rounded-full bg-flame px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wide text-flame-text shadow-sm sm:px-7 sm:py-3 sm:text-base sm:tracking-wider">
+            Menutti
+          </span>
+          <span className="absolute right-0 top-0 z-10 rounded-full bg-ink px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wide text-paper shadow-sm sm:px-7 sm:py-3 sm:text-base sm:tracking-wider">
+            Otros
+          </span>
+          <span className="absolute left-1/2 top-[62%] z-10 -translate-x-1/2 whitespace-nowrap rounded-full bg-ink px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.16em] text-paper shadow-sm sm:px-4 sm:py-2 sm:text-[11px] sm:tracking-[0.22em]">
+            Comparación
+          </span>
+        </FadeIn>
+
+        {/* Lista de features: una sola fila por feature (no se duplica
+            contenido entre columnas), con indicador cuadrado a cada
+            costado — flame/check alineado bajo la cápsula Menutti,
+            outline/X alineado bajo la cápsula Otros. */}
+        <FadeIn delay={0.1} className="mt-6 flex flex-col gap-3 sm:mt-8 sm:gap-4">
           {FILAS.map((fila) => (
             <div
               key={fila.title}
-              className="flex items-stretch gap-2 rounded-2xl border border-ink-border bg-paper-card p-2"
+              className="flex items-center gap-3 rounded-2xl border border-ink-border bg-paper-card px-4 py-4 sm:gap-5 sm:px-6 sm:py-5"
             >
-              <div className="flex min-w-0 flex-1 flex-col justify-center rounded-xl bg-flame px-3.5 py-3">
-                <h3 className="text-[13.5px] font-semibold leading-snug text-flame-text">{fila.title}</h3>
-                <p className="mt-1 text-[11.5px] leading-relaxed text-flame-text">{fila.body}</p>
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-flame sm:h-11 sm:w-11 sm:rounded-xl">
+                <Check size={18} strokeWidth={3} className="shrink-0 text-flame-text" aria-label="Menutti: sí" />
               </div>
-              <div className="flex w-[30%] shrink-0 grow-0 basis-[30%] items-center justify-center gap-2 rounded-xl bg-paper-soft">
-                <div className="flex flex-1 items-center justify-center">
-                  <CheckCircle2 size={18} className="shrink-0 text-cash" aria-label="Menutti: sí" />
-                </div>
-                <div className="h-6 w-px shrink-0 bg-ink-border" aria-hidden="true" />
-                <div className="flex flex-1 items-center justify-center">
-                  <X size={16} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
-                </div>
+              <div className="min-w-0 flex-1">
+                <h3 className="font-display text-[14px] font-bold leading-snug text-ink sm:text-base">{fila.title}</h3>
+                <p className="mt-0.5 text-[12px] leading-relaxed text-ink-dim sm:text-sm">{fila.body}</p>
+              </div>
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-ink-border bg-paper-soft sm:h-11 sm:w-11 sm:rounded-xl">
+                <X size={16} strokeWidth={2.5} className="shrink-0 text-ink-dim" aria-label="Otros: no" />
               </div>
             </div>
           ))}
-        </FadeIn>
-
-        {/* Desktop: tabla semántica real, dos columnas de estado a la
-            derecha de cada feature. */}
-        <FadeIn delay={0.05} className="mt-10 hidden overflow-hidden rounded-3xl border border-ink-border-strong bg-paper-card sm:block">
-          <table className="w-full border-collapse text-left">
-            <thead>
-              <tr className="border-b border-ink-border">
-                <th scope="col" className="px-6 py-4 text-[13px] font-medium uppercase tracking-wide text-ink-dimmer">
-                  &nbsp;
-                </th>
-                <th scope="col" className="w-[140px] px-6 py-4 text-center font-display text-base font-bold text-flame-deep">
-                  Menutti
-                </th>
-                <th scope="col" className="w-[140px] px-6 py-4 text-center text-[13px] font-medium uppercase tracking-wide text-ink-dimmer">
-                  Otros
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {FILAS.map((fila, i) => (
-                <tr key={fila.title} className={i !== FILAS.length - 1 ? 'border-b border-ink-border' : ''}>
-                  <th scope="row" className="p-2 text-left font-normal align-middle">
-                    <div className="flex h-full flex-col justify-center rounded-2xl bg-flame px-5 py-4">
-                      <span className="block text-[15px] font-semibold leading-snug text-flame-text">{fila.title}</span>
-                      <span className="mt-0.5 block text-[13px] leading-relaxed text-flame-text">{fila.body}</span>
-                    </div>
-                  </th>
-                  <td className="px-6 py-5 text-center align-middle">
-                    <CheckCircle2 size={22} className="mx-auto shrink-0 text-cash" aria-label="Sí" />
-                  </td>
-                  <td className="px-6 py-5 text-center align-middle">
-                    <X size={20} className="mx-auto shrink-0 text-ink-dim" aria-label="No" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </FadeIn>
       </div>
     </section>
