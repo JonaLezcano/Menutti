@@ -34,7 +34,7 @@ export default function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="px-4 py-16 sm:py-24">
+    <section id="faq" className="px-4 py-10 sm:py-16">
       <div className="mx-auto max-w-2xl">
         <FadeIn>
           <Eyebrow>Preguntas frecuentes</Eyebrow>

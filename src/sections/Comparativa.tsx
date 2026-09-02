@@ -43,7 +43,7 @@ const FILAS = [
  */
 export default function Comparativa() {
   return (
-    <section className="relative bg-paper-soft px-4 py-16 sm:py-24">
+    <section className="relative bg-paper-soft px-4 py-10 sm:py-16">
       <div className="ticket-perf ticket-perf--soft absolute inset-x-0 -top-1" aria-hidden="true" />
 
       <div className="mx-auto max-w-3xl">

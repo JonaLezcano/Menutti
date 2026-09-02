@@ -27,7 +27,7 @@ const PASOS = [
 
 export default function ComoFunciona() {
   return (
-    <section id="como-funciona" className="px-4 py-16 sm:py-24">
+    <section id="como-funciona" className="px-4 py-10 sm:py-16">
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <Eyebrow>De punta a punta</Eyebrow>

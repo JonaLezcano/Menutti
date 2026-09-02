@@ -2,13 +2,13 @@ import FadeIn from '../components/FadeIn';
 
 export default function Problema() {
   return (
-    <section className="relative bg-paper-soft px-4 py-16 sm:py-24">
+    <section className="relative bg-paper-soft px-4 py-10 sm:py-16">
       <div className="ticket-perf ticket-perf--soft absolute inset-x-0 -top-1" aria-hidden="true" />
 
       <div className="mx-auto max-w-3xl">
         <FadeIn>
           <h2 className="font-display text-[clamp(1.7rem,4vw,2.5rem)] font-bold leading-tight text-ink">
-            Tu sistema toma pedidos. ¿Cuánto te subió el ticket promedio?
+            ¿Seguís pensando en cómo facturar más?
           </h2>
         </FadeIn>
 
@@ -27,9 +27,8 @@ export default function Problema() {
               WhatsApp. Digitalizan el pedido, pero no cambian el ticket.
             </p>
             <p>
-              No es que falte esfuerzo — es que falta un sistema que trabaje mientras el cliente
-              pide. Cada pedido sin upsell es ticket promedio que quedó arriba de la mesa, y esa
-              plata no vuelve con el pedido siguiente.
+              No es que falte esfuerzo, es que falta un sistema que trabaje mientras el cliente
+              pide. Cada pedido sin upsell es menos plata en tu bolsillo.
             </p>
           </div>
         </FadeIn>

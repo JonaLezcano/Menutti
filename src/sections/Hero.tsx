@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[600px] overflow-hidden bg-ink px-4 pb-16 pt-32 sm:min-h-[620px] sm:pt-40 lg:min-h-[680px]"
+      className="relative min-h-[600px] overflow-hidden bg-ink px-4 pb-10 pt-32 sm:min-h-[620px] sm:pb-16 sm:pt-40 lg:min-h-[680px]"
     >
       {/* Fondo real: foto profesional (IA) de una hamburguesa con bacon,
           moody food photography — plato oscuro sobre fondo negro, muy

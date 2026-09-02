@@ -16,19 +16,30 @@ const PASOS = [
 
 export default function Prueba() {
   return (
-    <section id="prueba" className="px-4 py-16 sm:py-24">
+    <section id="prueba" className="px-4 py-10 sm:py-16">
       <div className="mx-auto max-w-5xl">
         <FadeIn>
           <Eyebrow>Caso real</Eyebrow>
           <h2 className="mt-3 max-w-2xl font-display text-[clamp(1.7rem,4vw,2.5rem)] font-bold leading-tight text-ink">
-            No es una promesa. Ya está funcionando en un local real.
+            Mirá cómo puede verse tu nuevo menú:
           </h2>
-          <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-ink-dim">
-            Menutti no es una idea ni un mockup — es el mismo sistema que ya toma pedidos todos
-            los días en un local real, con las 54 hamburguesas, papas, combos y bebidas reales
-            de su carta. Podés probarlo vos mismo: armá un pedido de prueba en la demo, con
-            upsells reales, y vas a ver exactamente lo que vería un cliente tuyo.
-          </p>
+          <div className="mt-4 flex flex-col gap-4 max-w-2xl text-[15px] leading-relaxed text-ink-dim">
+            <p>
+              Menutti no es una idea, es el sistema que hoy está funcionando en la operación
+              diaria de nuestros clientes: los pedidos entran, se arman solos y llegan listos al
+              WhatsApp del local, todos los días.
+            </p>
+            <p>
+              Eso significa que no vas a ser el primero en probarlo. Lo que te vamos a brindar es
+              un sistema que ya pasó por el peor examen que existe: un viernes a la noche con la
+              cocina llena.
+            </p>
+            <p>
+              Y no hace falta que me creas. Entrá a la demo, armá un pedido como si fueras un
+              cliente tuyo, dejá que te ofrezca el extra y mirá cómo se sube el ticket. Es
+              exactamente lo que va a ver tu cliente.
+            </p>
+          </div>
         </FadeIn>
 
         <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-5">

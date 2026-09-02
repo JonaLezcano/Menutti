@@ -14,7 +14,7 @@ import CtaGroup from '../components/CtaGroup';
  */
 export default function CierreBand() {
   return (
-    <section className="relative bg-ink px-4 py-16 sm:py-20">
+    <section className="relative bg-ink px-4 py-12 sm:py-20">
       <div className="ticket-perf absolute inset-x-0 -top-1" aria-hidden="true" />
 
       <FadeIn className="mx-auto flex max-w-2xl flex-col items-center gap-5 text-center">
