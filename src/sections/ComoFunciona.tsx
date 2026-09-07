@@ -6,22 +6,22 @@ const PASOS = [
   {
     n: '01',
     title: 'El cliente entra a tu menú digital.',
-    body: 'Con tu marca, tus fotos y tus precios — no una vidriera genérica.',
+    body: 'Con dominio web, con tu marca, tus fotos y tus precios.',
   },
   {
     n: '02',
     title: 'Arma su pedido y le aparecen sugerencias automáticas.',
-    body: 'Una bebida, un extra, un combo más grande — en el momento justo del armado del pedido, sin que vos tengas que decir nada.',
+    body: 'Una bebida, un extra, un combo más grande — en el momento justo del armado del pedido, sin que vos tengas que decir nada y sin invadir a tus clientes.',
   },
   {
     n: '03',
     title: 'Confirma y el pedido te llega directo al WhatsApp de siempre.',
-    body: 'Armado, ordenado y con el upsell ya adentro — vos no cambiás cómo atendés.',
+    body: 'Armado, ordenado y con el upsell ya adentro, listo para pasarlo a la comanda.',
   },
   {
     n: '04',
-    title: 'Vos mirás el panel y sabés exactamente qué pasó.',
-    body: 'Qué se vendió más, cuánto subió el ticket promedio con los upsells, y cuánto facturaste hoy, esta semana y este mes.',
+    title: 'Vos usás tu Panel de control.',
+    body: 'Sabrás qué se vendió más, cuánto es el ticket promedio con los upsells, y cuánto facturaste hoy, esta semana y este mes.',
   },
 ];
 
@@ -32,7 +32,7 @@ export default function ComoFunciona() {
         <FadeIn>
           <Eyebrow>De punta a punta</Eyebrow>
           <h2 className="mt-3 font-display text-[clamp(1.7rem,4vw,2.5rem)] font-bold leading-tight text-ink">
-            Así funciona, de punta a punta.
+            Así funciona Menutti.
           </h2>
         </FadeIn>
 

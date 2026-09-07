@@ -15,20 +15,15 @@ export default function Problema() {
         <FadeIn delay={0.05}>
           <div className="mt-6 flex flex-col gap-4 text-[15px] leading-relaxed text-ink-dim">
             <p>
+              No es que falte esfuerzo, es que falta un sistema que trabaje mientras el cliente
+              pide. Cada pedido sin upsell es menos plata en tu bolsillo.
+            </p>
+            <p>
               Da igual si tomás los pedidos a mano por WhatsApp o si ya tenés un menú online con
               link: los dos hacen exactamente lo mismo. El cliente entra, elige lo que ya venía a
               buscar, confirma el total y listo. Nadie le sugiere la bebida, el extra o el combo
-              más grande, salvo que alguien se acuerde de ofrecerlo en el momento.
-            </p>
-            <p>
-              Y al cierre del día pasa lo mismo en los dos casos: no sabés cuánto vendiste de
-              más, qué producto se agotó primero, ni si hoy facturaste mejor o peor que el
-              viernes pasado. La mayoría de los menús online son un catálogo con botón de
-              WhatsApp. Digitalizan el pedido, pero no cambian el ticket.
-            </p>
-            <p>
-              No es que falte esfuerzo, es que falta un sistema que trabaje mientras el cliente
-              pide. Cada pedido sin upsell es menos plata en tu bolsillo.
+              más grande, salvo que alguien se acuerde de ofrecerlo en el momento. Con Menutti
+              tenés un empleado 24/7 consiguiéndote más ventas.
             </p>
           </div>
         </FadeIn>

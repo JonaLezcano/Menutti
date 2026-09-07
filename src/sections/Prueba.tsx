@@ -84,7 +84,7 @@ export default function Prueba() {
                 src={dashboardImg}
                 alt="Panel de métricas de Menutti: productos más vendidos, ticket promedio, ventas por upsell y facturación."
                 width={390}
-                height={2346}
+                height={2693}
                 loading="lazy"
                 className="h-auto w-full"
               />

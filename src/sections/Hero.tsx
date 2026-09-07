@@ -1,6 +1,4 @@
-import { CheckCircle2 } from 'lucide-react';
 import FadeIn from '../components/FadeIn';
-import Eyebrow from '../components/Eyebrow';
 import CtaGroup from '../components/CtaGroup';
 import heroDesktop from '../assets/hero/demo-hero.webp';
 import heroMobile from '../assets/hero/demo-hero-mobile.webp';
@@ -72,10 +70,6 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-start gap-6 text-left">
-        <FadeIn>
-          <Eyebrow tone="ink">Para locales gastronómicos que ya venden por WhatsApp</Eyebrow>
-        </FadeIn>
-
         <FadeIn delay={0.05}>
           <h1 className="font-display text-[clamp(2.3rem,6.4vw,3.75rem)] font-extrabold leading-[1.05] tracking-tight text-paper">
             El menú online que hace crecer tu negocio
@@ -91,13 +85,6 @@ export default function Hero() {
 
         <FadeIn delay={0.15}>
           <CtaGroup tone="paper" />
-        </FadeIn>
-
-        <FadeIn delay={0.2}>
-          <p className="flex items-center gap-2 text-[13.5px] text-paper/60">
-            <CheckCircle2 size={16} className="shrink-0 text-cash-soft" />
-            Ya funcionando en un local real — no es una promesa, es un caso real.
-          </p>
         </FadeIn>
       </div>
     </section>
