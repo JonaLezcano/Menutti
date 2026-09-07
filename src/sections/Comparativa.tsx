@@ -25,35 +25,29 @@ const FILAS = [
   },
 ];
 
+/** Grid compartido por el header (VS) y cada fila, para que la columna
+ * vertebral central quede perfectamente alineada entre ambos. */
+const GRID = 'grid grid-cols-[1fr_44px_1fr] gap-x-2 sm:grid-cols-[1fr_52px_1fr] sm:gap-x-3 md:grid-cols-[1fr_60px_1fr] md:gap-x-4';
+
 /**
- * Comparativa Menutti vs. "Otros", reconstruida (3ra ronda) para calcar la
- * ESTRUCTURA real de la referencia "2 Points Infographic" — no solo el tono
- * de una curva. La referencia tiene: dos cápsulas de header con un rulo
- * decorativo chico pegado a cada una; una barra central alta tipo stadium
- * con "COMPARISON" rotado verticalmente que corre toda la altura de la
- * sección; un conector en horquilla que nace arriba de esa barra y se
- * separa en dos curvas hasta la base de cada cápsula; y DOS listas
- * paralelas sueltas (sin marco) debajo de cada cápsula.
+ * Comparativa Menutti vs. "Otros", 4ta ronda — calca la referencia "2
+ * Points" tipo ribbon-chart de 2 columnas (no el modelo zigzag de steps,
+ * descartado): dos cintas/pills horizontales por fila, con el extremo
+ * exterior redondeado y el extremo interior (el que mira al centro)
+ * cortado en punta de flecha; entre ambas, una columna vertebral vertical
+ * con un nodo numerado por fila; arriba, un header con "Menutti" a la
+ * izquierda, un ícono neutro "Otros" a la derecha y un círculo "VS" en
+ * el medio.
  *
- * Eso obliga a pasar de "una sola lista de 5 filas comparativas" a DOS
- * columnas espejadas con el mismo patrón "lo tenés / no lo tenés" que usa
- * cualquier infografía comparativa: misma FILAS de contenido a cada lado,
- * pero Menutti con cuadrado flame sólido + check + título en `ink` fuerte,
- * y Otros con cuadrado outline + X + título en `ink-dim` (apagado, para que
- * no compita visualmente con la columna Menutti aunque el texto se repita
- * — es intencional, no un error de contenido).
- *
- * Paleta: `flame` para Menutti (mismo naranja del CTA principal), `ink`
- * para Otros. Nada de `cash` verde (reservado para "la plata que sube" en
- * otra sección, decisión de una ronda anterior). La barra central y la
- * horquilla van en un neutro (`ink-border-strong` / `paper-card`), no en
- * el color de ninguna columna — así se lee como el eje neutral que arbitra
- * entre ambas, tal cual la referencia.
- *
- * Mobile (<640px): la barra alta + horquilla no entran con dos columnas
- * lado a lado, así que se arma un bloque totalmente aparte (apilado:
- * Menutti arriba, divisor horizontal con "Comparación", Otros abajo) en
- * vez de forzar el layout de desktop a un viewport angosto.
+ * Contenido: NO hay porcentajes reales que comparar (Menutti es un
+ * checklist binario, no una métrica), así que el "valor" de cada cinta no
+ * se representa con un número inventado sino con el propio relleno: la
+ * cinta Menutti va llena/sólida en `flame` (la tiene), la de Otros va
+ * hueca/outline en `ink` (no la tiene) — mismo largo en ambas para no
+ * insinuar ninguna cifra falsa, la diferencia es de relleno, no de
+ * longitud. Título completo + bajada en las dos columnas: es el mismo
+ * texto real del sitio (`FILAS`), atenuado del lado Otros porque no lo
+ * ofrece.
  */
 export default function Comparativa() {
   return (
@@ -68,209 +62,168 @@ export default function Comparativa() {
           </h2>
         </FadeIn>
 
-        {/* ---------- Desktop / tablet (>=640px): dos columnas + barra
-            central alta con horquilla, calcando la referencia. ---------- */}
-        <FadeIn delay={0.05} className="relative mt-14 hidden sm:block">
-          {/* Barra central tipo stadium: absoluta, `inset-y-0` la estira a
-              la altura total de este wrapper (cápsulas + listas), sin
-              medir nada por JS — el wrapper no tiene alto propio, lo
-              define el flujo normal de sus hijos (header + listas). */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-1/2 z-10 flex w-12 -translate-x-1/2 items-center justify-center rounded-full border border-ink-border-strong bg-paper-card shadow-sm md:w-14"
-          >
-            <span className="whitespace-nowrap font-mono text-[11px] font-bold uppercase tracking-[0.32em] text-ink [writing-mode:vertical-rl] rotate-180 md:text-xs">
-              Comparación
-            </span>
-          </div>
-
-          {/* Horquilla: nace arriba de la barra central y se separa hacia
-              la base de cada cápsula — un solo trazo neutro por lado. */}
-          <svg
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 top-0 z-0 h-[92px] w-full text-ink-border-strong md:h-[104px]"
-            viewBox="0 0 400 92"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M200,92 C200,60 150,50 60,42.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              vectorEffect="non-scaling-stroke"
-            />
-            <path
-              d="M200,92 C200,60 250,50 349.5,42.5"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              vectorEffect="non-scaling-stroke"
-            />
-          </svg>
-
-          {/* Cápsulas de header, cada una con su rulo decorativo pegado al
-              costado que mira al centro. */}
-          <div className="relative z-20 flex h-[92px] items-start justify-between md:h-[104px]">
-            <div className="relative">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 44 34"
-                className="pointer-events-none absolute -right-6 -top-1 h-8 w-11 text-flame md:-right-7 md:h-9 md:w-12"
-              >
-                <path
-                  d="M6,18 C14,18 18,18 18,10 C18,4 8,4 8,10 C8,15 14,16 22,14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-              <span className="relative inline-flex items-center justify-center rounded-full bg-flame px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-flame-text shadow-sm md:px-7 md:text-base">
+        {/* ---------- Desktop / tablet (>=640px): ribbon-chart de 2
+            columnas + columna vertebral central. ---------- */}
+        <div className="mt-14 hidden sm:block">
+          {/* Header: nombres + VS, sobre el mismo grid que las filas para
+              que el círculo VS quede exactamente arriba de la columna
+              vertebral. */}
+          <FadeIn delay={0.05} className={`${GRID} items-end`}>
+            <div className="text-right">
+              <div className="inline-flex items-center gap-1.5 font-display text-xl font-bold text-ink md:text-2xl">
                 Menutti
+                <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-flame" aria-hidden="true" />
+              </div>
+              <p className="mt-1.5 text-[12.5px] leading-snug text-ink-dim md:text-sm">
+                Tu marca, tus datos, a tu ritmo.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ink-border-strong bg-paper-card font-mono text-[11px] font-bold uppercase tracking-wide text-ink-dim shadow-sm md:h-11 md:w-11">
+                VS
               </span>
             </div>
 
-            <div className="relative">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 44 34"
-                className="pointer-events-none absolute -left-6 -top-1 h-8 w-11 text-ink md:-left-7 md:h-9 md:w-12"
-              >
-                <path
-                  d="M38,18 C30,18 26,18 26,10 C26,4 36,4 36,10 C36,15 30,16 22,14"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-              <span className="relative inline-flex items-center justify-center rounded-full bg-ink px-6 py-3 font-display text-sm font-bold uppercase tracking-wider text-paper shadow-sm md:px-7 md:text-base">
+            <div className="text-left">
+              <div className="inline-flex items-center gap-1.5 font-display text-xl font-bold text-ink-dim md:text-2xl">
+                <span className="inline-block h-2 w-2 rounded-full border border-ink-border-strong" aria-hidden="true" />
                 Otros
-              </span>
+              </div>
+              <p className="mt-1.5 text-[12.5px] leading-snug text-ink-dim md:text-sm">
+                Plantillas genéricas, siempre iguales.
+              </p>
+            </div>
+          </FadeIn>
+
+          {/* Filas: cada una es el mismo GRID, con la columna vertebral
+              (línea continua + nodo numerado) corriendo detrás de todas. */}
+          <div className="relative mt-2">
+            <span
+              aria-hidden="true"
+              className="pointer-events-none absolute left-1/2 top-0 bottom-4 w-px -translate-x-1/2 bg-ink-border-strong sm:left-[calc(50%)]"
+            />
+
+            <ul className="relative flex flex-col">
+              {FILAS.map((fila, i) => (
+                <FadeIn
+                  key={fila.title}
+                  delay={0.06 + i * 0.05}
+                  as="li"
+                  className={`${GRID} items-center py-3`}
+                >
+                  {/* Cinta Menutti: llena, pill afuera (izq), flecha hacia el centro (der) */}
+                  <div className="relative">
+                    <div className="relative flex min-h-[3.25rem] items-center gap-2.5 rounded-l-full bg-gradient-to-r from-flame-soft to-flame py-2.5 pl-5 pr-8 shadow-[0_14px_26px_-16px_rgba(185,60,29,0.75)] md:min-h-[3.75rem] md:gap-3 md:pl-6 md:pr-10">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20 md:h-7 md:w-7">
+                        <Check size={13} strokeWidth={3} className="text-flame-text" aria-hidden="true" />
+                      </span>
+                      <span className="min-w-0 font-display text-[13px] font-bold leading-snug text-flame-text md:text-[15px]">
+                        {fila.title}
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="absolute right-0 top-1/2 h-6 w-4 -translate-y-1/2 translate-x-[65%] bg-flame-deep drop-shadow-[2px_2px_3px_rgba(185,60,29,0.4)] [clip-path:polygon(0%_0%,100%_50%,0%_100%)] md:h-7 md:w-5"
+                    />
+                    <p className="mt-2 pl-5 pr-8 text-[12px] leading-relaxed text-ink-dim md:pl-6 md:pr-10 md:text-[13px]">
+                      {fila.body}
+                    </p>
+                  </div>
+
+                  {/* Nodo de la columna vertebral */}
+                  <div className="relative z-10 flex items-center justify-center self-stretch">
+                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-ink-border-strong bg-paper-soft font-mono text-[10.5px] font-bold text-ink-dim md:h-9 md:w-9 md:text-[11px]">
+                      0{i + 1}
+                    </span>
+                  </div>
+
+                  {/* Cinta Otros: hueca/outline, pill afuera (der), flecha hacia el centro (izq) */}
+                  <div className="relative">
+                    <div className="relative flex min-h-[3.25rem] items-center gap-2.5 rounded-r-full border border-ink-border-strong bg-paper-card py-2.5 pl-8 pr-5 shadow-[0_10px_20px_-16px_rgba(32,24,16,0.3)] md:min-h-[3.75rem] md:gap-3 md:pl-10 md:pr-6">
+                      <span className="min-w-0 font-display text-[13px] font-semibold leading-snug text-ink-dim md:text-[15px]">
+                        {fila.title}
+                      </span>
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink-border-strong md:h-7 md:w-7">
+                        <X size={12} strokeWidth={2.5} className="text-ink-dimmer" aria-hidden="true" />
+                      </span>
+                    </div>
+                    <span
+                      aria-hidden="true"
+                      className="absolute left-0 top-1/2 h-6 w-4 -translate-x-[65%] -translate-y-1/2 border-y border-l border-ink-border-strong bg-paper-card [clip-path:polygon(100%_0%,0%_50%,100%_100%)] md:h-7 md:w-5"
+                    />
+                    <p className="mt-2 pl-8 pr-5 text-right text-[12px] leading-relaxed text-ink-dim md:pl-10 md:pr-6 md:text-[13px]">
+                      {fila.body}
+                    </p>
+                  </div>
+                </FadeIn>
+              ))}
+            </ul>
+
+            <div className={`${GRID} pt-1`}>
+              <span aria-hidden="true" className="col-start-2 mx-auto h-2 w-2 rounded-full bg-ink-border-strong" />
             </div>
           </div>
 
-          {/* Dos listas paralelas, sueltas (sin marco), a cada costado de
-              la barra central. */}
-          <div className="relative z-20 mt-8 grid grid-cols-2 gap-x-8 md:gap-x-16">
-            <ul className="flex flex-col gap-5 pr-3 md:pr-8">
-              {FILAS.map((fila) => (
-                <li key={fila.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-flame">
-                    <Check size={13} strokeWidth={3} className="text-flame-text" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[15px] font-bold leading-snug text-ink">{fila.title}</h3>
-                    <p className="mt-0.5 text-[13px] leading-relaxed text-ink-dim">{fila.body}</p>
-                  </div>
-                </li>
-              ))}
-              <li aria-hidden="true" className="mt-1 h-px w-16 bg-flame" />
-            </ul>
+          <p className="mt-8 text-center text-[12px] text-ink-dim md:text-[13px]">
+            Cinco cosas que Menutti resuelve de fábrica y el resto te deja armar por tu cuenta.
+          </p>
+        </div>
 
-            <ul className="flex flex-col gap-5 pl-3 md:pl-8">
-              {FILAS.map((fila) => (
-                <li key={fila.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-ink-border-strong">
-                    <X size={12} strokeWidth={2.5} className="text-ink-dim" aria-hidden="true" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[15px] font-bold leading-snug text-ink-dim">{fila.title}</h3>
-                    <p className="mt-0.5 text-[13px] leading-relaxed text-ink-dim">{fila.body}</p>
-                  </div>
-                </li>
-              ))}
-              <li aria-hidden="true" className="mt-1 h-px w-16 bg-ink" />
-            </ul>
-          </div>
-        </FadeIn>
-
-        {/* ---------- Mobile (<640px): apilado, con divisor horizontal
-            "Comparación" en vez de la barra alta + horquilla. ---------- */}
-        <div className="mt-8 flex flex-col gap-6 sm:hidden">
+        {/* ---------- Mobile (<640px): apilado, sin columna vertebral —
+            dos listas de cintas completas, una debajo de la otra. ---------- */}
+        <div className="mt-8 flex flex-col gap-7 sm:hidden">
           <FadeIn delay={0.05}>
-            <div className="relative inline-flex">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 34 26"
-                className="pointer-events-none absolute -right-5 -top-2 h-6 w-8 text-flame"
-              >
-                <path
-                  d="M5,14 C11,14 14,14 14,8 C14,3 7,3 7,8 C7,11 11,12 17,11"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-              <span className="relative inline-flex items-center justify-center rounded-full bg-flame px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wide text-flame-text shadow-sm">
-                Menutti
-              </span>
+            <div className="inline-flex items-center gap-1.5 font-display text-lg font-bold text-ink">
+              Menutti
+              <span className="inline-block h-[7px] w-[7px] animate-pulse rounded-full bg-flame" aria-hidden="true" />
             </div>
 
-            <ul className="mt-5 flex flex-col gap-4">
+            <ul className="mt-4 flex flex-col gap-4">
               {FILAS.map((fila) => (
-                <li key={fila.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-flame">
-                    <Check size={13} strokeWidth={3} className="text-flame-text" aria-hidden="true" />
+                <li key={fila.title} className="relative">
+                  <div className="flex min-h-[3rem] items-center gap-2.5 rounded-full bg-gradient-to-r from-flame-soft to-flame py-2.5 pl-4 pr-5 shadow-[0_12px_22px_-16px_rgba(185,60,29,0.75)]">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-white/20">
+                      <Check size={13} strokeWidth={3} className="text-flame-text" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0 font-display text-[13px] font-bold leading-snug text-flame-text">
+                      {fila.title}
+                    </span>
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[14px] font-bold leading-snug text-ink">{fila.title}</h3>
-                    <p className="mt-0.5 text-[12px] leading-relaxed text-ink-dim">{fila.body}</p>
-                  </div>
+                  <p className="mt-1.5 pl-4 text-[12px] leading-relaxed text-ink-dim">{fila.body}</p>
                 </li>
               ))}
-              <li aria-hidden="true" className="mt-1 h-px w-16 bg-flame" />
             </ul>
           </FadeIn>
 
           <FadeIn delay={0.08} className="flex items-center gap-3">
             <span className="h-px flex-1 bg-ink-border-strong" />
-            <span className="whitespace-nowrap rounded-full border border-ink-border-strong bg-paper-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-ink">
-              Comparación
+            <span className="whitespace-nowrap rounded-full border border-ink-border-strong bg-paper-card px-3 py-1.5 font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-ink-dim">
+              vs
             </span>
             <span className="h-px flex-1 bg-ink-border-strong" />
           </FadeIn>
 
           <FadeIn delay={0.1}>
-            <div className="relative inline-flex">
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 34 26"
-                className="pointer-events-none absolute -left-5 -top-2 h-6 w-8 text-ink"
-              >
-                <path
-                  d="M29,14 C23,14 20,14 20,8 C20,3 27,3 27,8 C27,11 23,12 17,11"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                  vectorEffect="non-scaling-stroke"
-                />
-              </svg>
-              <span className="relative inline-flex items-center justify-center rounded-full bg-ink px-3.5 py-2 font-display text-[11px] font-bold uppercase tracking-wide text-paper shadow-sm">
-                Otros
-              </span>
+            <div className="inline-flex items-center gap-1.5 font-display text-lg font-bold text-ink-dim">
+              <span className="inline-block h-[7px] w-[7px] rounded-full border border-ink-border-strong" aria-hidden="true" />
+              Otros
             </div>
 
-            <ul className="mt-5 flex flex-col gap-4">
+            <ul className="mt-4 flex flex-col gap-4">
               {FILAS.map((fila) => (
-                <li key={fila.title} className="flex items-start gap-3">
-                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border border-ink-border-strong">
-                    <X size={12} strokeWidth={2.5} className="text-ink-dim" aria-hidden="true" />
+                <li key={fila.title} className="relative">
+                  <div className="flex min-h-[3rem] items-center gap-2.5 rounded-full border border-ink-border-strong bg-paper-card py-2.5 pl-4 pr-5">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-ink-border-strong">
+                      <X size={12} strokeWidth={2.5} className="text-ink-dimmer" aria-hidden="true" />
+                    </span>
+                    <span className="min-w-0 font-display text-[13px] font-semibold leading-snug text-ink-dim">
+                      {fila.title}
+                    </span>
                   </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-[14px] font-bold leading-snug text-ink-dim">{fila.title}</h3>
-                    <p className="mt-0.5 text-[12px] leading-relaxed text-ink-dim">{fila.body}</p>
-                  </div>
+                  <p className="mt-1.5 pl-4 text-[12px] leading-relaxed text-ink-dim">{fila.body}</p>
                 </li>
               ))}
-              <li aria-hidden="true" className="mt-1 h-px w-16 bg-ink" />
             </ul>
           </FadeIn>
         </div>

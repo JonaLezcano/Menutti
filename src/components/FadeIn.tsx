@@ -10,6 +10,10 @@ interface FadeInProps {
   /** Duration in seconds. */
   duration?: number;
   className?: string;
+  /** Elemento HTML a renderizar (default 'div'). Usar 'li' cuando el
+   * wrapper vive dentro de un <ul>/<ol>, para no romper la semántica de
+   * lista con un <div> intercalado. */
+  as?: 'div' | 'li';
 }
 
 /**
@@ -24,9 +28,11 @@ export default function FadeIn({
   y = 28,
   duration = 0.7,
   className,
+  as = 'div',
 }: FadeInProps) {
+  const MotionTag = as === 'li' ? motion.li : motion.div;
   return (
-    <motion.div
+    <MotionTag
       className={className}
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
@@ -34,6 +40,6 @@ export default function FadeIn({
       transition={{ duration, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
-    </motion.div>
+    </MotionTag>
   );
 }
