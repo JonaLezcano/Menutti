@@ -16,6 +16,12 @@ export default defineConfig({
         cookies: resolve(import.meta.dirname, 'cookies.html'),
         terminos: resolve(import.meta.dirname, 'terminos.html'),
         avisoLegal: resolve(import.meta.dirname, 'aviso-legal.html'),
+        // Landings de marketing standalone (borradores para revisión del
+        // cliente, no linkeadas desde la navegación) — reusan componentes
+        // React del sitio principal, por eso van acá y no como HTML
+        // estático como las páginas legales de arriba.
+        dolor: resolve(import.meta.dirname, 'dolor.html'),
+        transformacion: resolve(import.meta.dirname, 'transformacion.html'),
       },
     },
   },

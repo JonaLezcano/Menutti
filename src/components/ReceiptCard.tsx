@@ -42,15 +42,15 @@ export default function ReceiptCard() {
 
         <div className="my-3 border-t border-dashed border-ink-border-strong" />
 
-        <div className="flex items-center justify-between rounded-lg bg-flame/10 px-2.5 py-2 font-mono text-[12.5px] text-flame-deep">
+        <div className="flex items-center justify-between gap-2 rounded-lg bg-flame/10 px-2.5 py-2 font-mono text-[12.5px] text-flame-deep">
           <span className="flex items-center gap-1.5">
-            <span className="relative flex h-2 w-2" aria-hidden="true">
+            <span className="relative flex h-2 w-2 shrink-0" aria-hidden="true">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-flame opacity-60" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-flame" />
             </span>
             + Upsell: Bebida 500ml
           </span>
-          <span className="tabular-nums">$1.500</span>
+          <span className="shrink-0 tabular-nums">$1.500</span>
         </div>
 
         <div className="my-3 border-t border-dashed border-ink-border-strong" />

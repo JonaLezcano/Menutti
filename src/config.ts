@@ -1,9 +1,10 @@
 /**
- * URL de la demo interactiva real (menú + upsells + checkout de Crunchy
- * Burger). Todos los botones "PEDIR DEMO AHORA" del sitio importan esta
- * constante en vez de hardcodear el link, así que actualizar acá alcanza
- * para todo el sitio. Deployada en Vercel (Netlify quedó sin créditos de
- * producción en la cuenta del equipo JFL).
+ * URL de la demo interactiva (menú + upsells + checkout). Es una sola para
+ * todo: la landing principal y las dos landings de ángulo (dolor.html y
+ * transformacion.html) apuntan acá, porque todos los botones "PEDIR DEMO
+ * AHORA" importan esta constante en vez de hardcodear el link. Deployada
+ * en Vercel (Netlify quedó sin créditos de producción en la cuenta del
+ * equipo JFL).
  */
 export const DEMO_URL = 'https://menutti-demo.vercel.app';
 

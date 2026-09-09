@@ -1,6 +1,6 @@
-// Mismo número que usa JFL IT en sus otros sitios (1165013535, Buenos
-// Aires), formato wa.me estándar: 54 (país) + 9 + número.
-export const WHATSAPP_NUMBER = '5491165013535';
+// Número comercial de Menutti (1164595315, Buenos Aires), formato wa.me
+// estándar: 54 (país) + 9 + número.
+export const WHATSAPP_NUMBER = '5491164595315';
 
 export function buildWhatsAppHref(text: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
